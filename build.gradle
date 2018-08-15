@@ -12,22 +12,63 @@ plugins {
 
     // Apply the application plugin to add support for building an application
     id 'application'
+
+    // Apply the jacoco plugin for code coverage reporting
+    id 'jacoco'
 }
 
+
 // Define the main class for the application
-mainClassName = 'App'
+mainClassName = 'Airport'
+
+
+// run `./gradlew clean test jacocoTestReport` to generate test coverage data
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.enabled true
+    }
+}
+// gradle test is finalized by generating the coverage report
+test.finalizedBy jacocoTestReport
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                counter = 'INSTRUCTION'
+                value = 'COVEREDRATIO'
+                minimum = 0.8
+            }
+        }
+
+        rule {
+            limit {
+                counter = 'CLASS'
+                value = 'MISSEDCOUNT'
+                maximum = 1     // for main class
+            }
+        }
+    }
+}
+// to run coverage verification during the build (and fail when appropriate)
+check.dependsOn jacocoTestCoverageVerification
+
 
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
     compile 'com.google.guava:guava:23.0'
 
+    // Enables annotations for getters, setters, equals(), and hashcode()
+    compileOnly 'org.projectlombok:lombok:1.18.2'
+
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
 }
 
-// In this section you declare where to find the dependencies of your project
+
 repositories {
-    // Use jcenter for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
     jcenter()
+    mavenCentral()
 }

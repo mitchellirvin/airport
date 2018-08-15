@@ -1,3 +1,8 @@
+package passengers;
+
+import lombok.Data;
+
+@Data
 public class Passenger {
 
   private String name;
@@ -6,14 +11,7 @@ public class Passenger {
   public Passenger(String name, boolean vip) {
     this.name = name;
     this.vip = vip;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public boolean isVip() {
-    return vip;
+    name.indexOf("asd");
   }
 
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="FlightTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2018-07-31T15:08:32" hostname="C02TX93BHTD6MBP" time="0.003">
+  <properties/>
+  <testcase name="testEconomyFlightForNonVip" classname="FlightTest" time="0.002"/>
+  <testcase name="testBusinessFlightForNonVip" classname="FlightTest" time="0.0"/>
+  <testcase name="testEconomyFlightForVip" classname="FlightTest" time="0.0"/>
+  <testcase name="testBusinessFlightForVip" classname="FlightTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
